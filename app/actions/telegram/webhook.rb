@@ -7,7 +7,7 @@ module Twelve
         def handle(request, response)
           payload = request.params.to_h
 
-          logger.info(payload)
+          app["logger"].info(payload)
 
           res.status = 200
           res.body = "OK"
