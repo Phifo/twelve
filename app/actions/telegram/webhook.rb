@@ -4,6 +4,8 @@ module Twelve
   module Actions
     module Telegram
       class Webhook < Twelve::Action
+        include Deps["settings"]
+
         def handle(request, response)
           response.format = :json
 
@@ -27,8 +29,8 @@ module Twelve
         private
 
         def send_message(chat_id, text)
-          token = ENV.fetch("TELEGRAM_BOT_TOKEN")
-          uri = URI("#{TELEGRAM_API}/bot#{token}/sendMessage")
+          token = settings.telegram_bot_token
+          uri = URI("#{settings.telegram_api}/bot#{token}/sendMessage")
 
           request = Net::HTTP::Post.new(uri)
           request["Content-Type"] = "application/json"
@@ -40,8 +42,8 @@ module Twelve
         end
 
         def send_video(chat_id, file_path)
-          token = ENV.fetch("TELEGRAM_BOT_TOKEN")
-          uri = URI("#{TELEGRAM_API}/bot#{token}/sendVideo")
+          token = settings.telegram_bot_token
+          uri = URI("#{settings.telegram_api}/bot#{token}/sendVideo")
 
           request = Net::HTTP::Post::Multipart.new(
             uri.path,
