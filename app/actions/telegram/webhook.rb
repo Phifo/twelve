@@ -37,7 +37,7 @@ module Twelve
           uri = URI("#{settings.telegram_api}/bot#{token}/sendMessage")
 
           request = Net::HTTP::Post.new(uri)
-          request["Content-Type"] = "application/json"
+          request["content-type"] = "application/json"
           request.body = { chat_id: chat_id, text: text }.to_json
 
           Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
