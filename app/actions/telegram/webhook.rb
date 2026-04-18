@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "uri"
+
 module Twelve
   module Actions
     module Telegram
