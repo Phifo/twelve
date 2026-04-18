@@ -9,8 +9,8 @@ module Twelve
 
           Hanami.logger.info(payload)
 
-          res.status = 200
-          res.body = "OK"
+          response.status = 200
+          response.body = "OK"
         end
       end
     end
