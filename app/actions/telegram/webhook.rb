@@ -7,7 +7,7 @@ module Twelve
         def handle(request, response)
           payload = request.params.to_h
 
-          app["logger"].info(payload)
+          Hanami.logger.info(payload)
 
           res.status = 200
           res.body = "OK"
